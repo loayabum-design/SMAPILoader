@@ -74,14 +74,14 @@
 			<HintPath>..\SharedLibs\MonoMod.Utils.dll</HintPath>
 		</Reference>
 		<Reference Include="MonoGame.Framework">
-			<HintPath>..\..\Stardew Assemblies\MonoGame.Framework.dll</HintPath>
+			<HintPath>..\Stardew Assemblies\MonoGame.Framework.dll</HintPath>
 		</Reference>
 		<Reference Include="StardewValley">
-			<HintPath>..\..\Stardew Assemblies\StardewValley.dll</HintPath>
+			<HintPath>..\Stardew Assemblies\StardewValley.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="StardewValley.GameData">
-			<HintPath>..\..\Stardew Assemblies\StardewValley.GameData.dll</HintPath>
+			<HintPath>..\Stardew Assemblies\StardewValley.GameData.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
