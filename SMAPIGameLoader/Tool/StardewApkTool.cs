@@ -45,19 +45,7 @@ internal static class StardewApkTool
     {
         get
         {
-            if (CurrentPackageInfo == null)
-                return false;
-
-            //play store
-            if (IsGameFromPlayStore)
-            {
-                var version = CurrentPackageInfo.VersionName;
-                var splitApks = CurrentPackageInfo.ApplicationInfo?.SplitSourceDirs;
-                return splitApks?.Count == 2;
-            }
-
-            //samsung
-            return true;
+            return CurrentPackageInfo != null;
         }
     }
 
@@ -97,9 +85,14 @@ internal static class StardewApkTool
 
                 //play store
                 if (IsGameFromPlayStore)
-                    return CurrentPackageInfo.ApplicationInfo.SplitSourceDirs?.First(path => path.Contains("split_content"));
+                {
+                    var splitApks = CurrentPackageInfo.ApplicationInfo?.SplitSourceDirs;
+                    var contentApk = splitApks?.FirstOrDefault(path => path.Contains("split_content"));
+                    if (contentApk != null)
+                        return contentApk;
+                }
 
-                //samsung
+                //samsung, or manual apk without splits
                 return BaseApkPath;
             }
             catch (Exception ex)
