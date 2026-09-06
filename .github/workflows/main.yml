@@ -1,4 +1,4 @@
-name: Build APK
+Name: Build APK
 
 on:
   workflow_dispatch:
@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Copy Assemblies to Correct Path
+        run: |
+          mkdir -p Assemblies
+          cp -r "Stardew Assemblies"/* Assemblies/ || true
 
       - name: Setup Java
         uses: actions/setup-java@v4
