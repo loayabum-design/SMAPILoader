@@ -9,11 +9,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build
-        run: dotnet build -c Release
+      - name: Install Android Workload
+        run: dotnet workload install android
+
+      - name: Build APK
+        run: dotnet build -c Release -f net8.0-android
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: SMAPILoader-APK
+          path: '**/bin/Release/*/*-Signed.apk'
 
